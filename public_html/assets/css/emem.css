@@ -449,6 +449,10 @@ section#home img.projectpromo
 	margin-right: 55px;
 	margin-bottom: 55px;
 }
+section#home img.projectpromo.active
+{
+	border: 5px solid #BA1313;
+}
 section#home img.projectpromo:nth-child(4n)
 {
 	margin-right: 0px;
@@ -488,6 +492,10 @@ section#portfolio nav ul li a
 section#portfolio nav ul li a:hover
 {
 	background-color: #FFFFFF;
+	color: #BA1313;
+}
+section#portfolio nav ul li a.active
+{
 	color: #BA1313;
 }
 section#portfolio nav ul li a span.subtitle
