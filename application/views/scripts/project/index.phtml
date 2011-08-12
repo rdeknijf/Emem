@@ -1,0 +1,16 @@
+
+<article class="project">
+    
+    <h1><?=$this->project->getTitle()?></h1>
+    <?=$this->project->getDescription()?>   
+    
+    <?=$this->galleria($this->project)?>
+    
+    <?php
+    
+        //Zend_Debug::dump($this->project->getImages());
+                
+    ?>
+    
+    
+</article>

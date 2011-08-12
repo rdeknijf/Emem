@@ -1,0 +1,13 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+/* TEAM */
+  Everything: Rutger de Knijf
+  Site: www.deknijf.com
+  Location: The Netherlands
+  
+
+/* SITE */
+  Standards:    HTML5, CSS3
+  Components:   Zend Framework, Html5Boilerplate, Modernizr, jQuery
+  Software:     NetBeans 7, Apache Ant, Stylizer 5, YUI-Compressor for JS and CSS, HTML-Compressor, Notepad++, Adobe 5.5
