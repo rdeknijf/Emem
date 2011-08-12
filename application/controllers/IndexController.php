@@ -10,23 +10,15 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        
-    }
 
-    public function aboutAction()
-    {
-        // action body
-    }
+        $projectsTable = new Emem_Model_Project_Table;
 
-    public function contactAction()
-    {
-        // action body
+        $this->view->projects = $projectsTable->fetchAll($projectsTable->select()->order('priority DESC'));
+
+
+
+
     }
 
 
 }
-
-
-
-
-

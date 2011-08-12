@@ -1,15 +1,35 @@
 <section id="home">
-    Project imgs here
+
+    <?php
+        $this->partialLoop()->setObjectKey('project');
+        echo $this->partialLoop('partials/homeproject.phtml', $this->projects);
+    ?>
+
 </section>
 
-<a href="#" class="arrow_down link_portfolio"></a>
+<a href="#portfolio" class="link_arrow arrow_down link_portfolio"></a>
 
 <section id="portfolio">
-    <h1>Portfolio</h1>
+        <div id="stage">
+        <?php
+            $this->partialLoop()->setObjectKey('project');
+            echo $this->partialLoop('partials/project.phtml', $this->projects);
+        ?>
+    </div>
+    <h1 id="portfoliotitle">Portfolio</h1>
+    <nav id="projectlisting">
+        <ul>
+        <?php
+            $this->partialLoop()->setObjectKey('project');
+            echo $this->partialLoop('partials/projectnav.phtml', $this->projects);
+        ?>
+        </ul>
+    </nav>
+
 
 </section>
 
-<a href="#" class="arrow_down link_about"></a>
+<a href="#about" class="link_arrow arrow_down link_about"></a>
 
 <section id="about">
 
@@ -22,5 +42,5 @@
         Daarnaast heb ik een grote liefde voor het maken van de kleding zelf. Momenteel studeer ik verder aan de Meesteropleiding Coupeur om mijn technische kennis uit te breiden.</p>
 </section>
 
-<a href="#" class="arrow_down link_contact"></a>
+<a href="#contact" class="link_arrow arrow_down link_contact"></a>
 

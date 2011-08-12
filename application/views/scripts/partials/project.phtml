@@ -1,0 +1,21 @@
+<article class="project" id="art_pid_<?=$this->project->getId()?>">
+    <h1><?= $this->project->getTitle() ?></h1>
+    <h2><?= $this->project->getSubtitle() ?></h2>
+    <?= $this->project->getContent()?>
+    <div class="lightbox">
+        <?php
+
+            if ($imgs = $this->project->getImgs()) {
+
+                foreach($imgs as $img) {
+
+                    echo '<img src="' . $img['thumb'] . '">';
+                    
+
+                }
+
+            }
+
+        ?>
+    </div>
+</article>
