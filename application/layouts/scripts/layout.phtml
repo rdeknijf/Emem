@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="nl"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="nl"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="nl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="nl"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <?php
+        echo $this->headTitle();
+        echo $this->headMeta();
+        ?>
+        <!-- CSS -->
+
+        <?php
+        echo $this->headLink();
+        ?>
+
+
+        <!-- Header JavaScript -->
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+
+
+
+    </head>
+
+    <body>
+
+        <div id="container">
+            <header id="siteheader">
+                <h1>Meta van der Kant</h1>
+                <h2>Kostuumontwerp</h2>
+                <nav>
+                    <a href="#" class="link_portfolio">Portfolio</a>
+                    <a href="#" class="link_about">Over Mij</a>
+                    <a href="#" class="link_contact">Contact</a>
+
+                </nav>
+            </header>
+            <div id="main" role="main">
+
+                <?php echo $this->layout()->content; ?>
+
+            </div>
+            <footer id="sitefooter">
+
+            </footer>
+        </div> <!--! end of #container -->
+
+
+        <!-- JavaScript at the bottom for fast page loading -->
+
+        <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+
+        <?php
+        echo $this->headScript();
+        ?>
+
+
+
+        <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+           chromium.org/developers/how-tos/chrome-frame-getting-started -->
+        <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+
+    </body>
+</html>
