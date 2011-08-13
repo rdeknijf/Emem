@@ -68,13 +68,13 @@ body, button, input, select, textarea
  */
 ::-moz-selection
 {
-	background: #FE5757;
+	background: #EA2F2F;
 	color: #FFF;
 	text-shadow: none;
 }
 ::selection
 {
-	background: #FE57A1;
+	background: #EA2F2F;
 	color: #FFF;
 	text-shadow: none;
 }
@@ -461,7 +461,7 @@ section#home img.projectpromo:nth-child(4n)
 section#portfolio
 {
 	display: block;
-	height: 400px;
+	height: 440px;
 	padding: 0px;
 }
 section#portfolio h1#portfoliotitle
@@ -530,7 +530,7 @@ section#portfolio nav ul li a span.subtitle
 }
 #stage article:first-child
 {
-	display: block;
+	/*[disabled]display:block;*/
 }
 #stage article .lightbox
 {
@@ -542,6 +542,7 @@ section#portfolio nav ul li a span.subtitle
 	display: inline-block;
 	height: 69px;
 	margin-right: 25px;
+	margin-bottom: 25px;
 }
 /*ABOUT*/
 section#about
@@ -557,14 +558,14 @@ section#about
 }
 footer#sitefooter
 {
-	width: 900px;
+	width: 890px;
 	/*+placement:margin-auto 0px 0px;*/
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
 	left: 0px;
 	top: 0px;
-	padding: 30px;
+	padding: 30px 10px 30px 60px;
 	color: #FFFFFF;
 }
 footer#sitefooter h1

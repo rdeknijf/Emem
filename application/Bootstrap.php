@@ -39,12 +39,35 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view = $this->bootstrap('view')->getResource('view');
 
 
+
+
+        //. SCROLLTO
+
+        $view->headScript()->appendFile('/assets/js/lib/jquery.scrollTo.js');
+
+        //. SAUSAGE
+
+        $view->headLink()->appendStylesheet('/assets/css/lib/sausage.couchdb.css');
+        $view->headScript()->appendFile('/assets/js/lib/jquery.ui.widget.js');
+        $view->headScript()->appendFile('/assets/js/lib/jquery.sausage.js');
+
+        //. PRETTYPHOTO
+
+        $view->headLink()->appendStylesheet('/assets/css/lib/prettyPhoto.css');
+        $view->headScript()->appendFile('/assets/js/lib/jquery.prettyPhoto.js');
+
+
+
         //. CSS
         $view->headLink()->appendStylesheet('/assets/css/emem.css');
 
-
         //. JS
         $view->headScript()->appendFile('/assets/js/emem.js');
+
+
+
+
+
 
         // META
         $view->headTitle()->setSeparator(' - ')
