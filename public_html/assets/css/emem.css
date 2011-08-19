@@ -356,7 +356,7 @@ html
 }
 body
 {
-	background-image: url(/assets/img/metavanderkantback.jpg);
+	background-image: url(/assets/img/metavanderkantback2.jpg);
 	background-repeat: no-repeat;
 	background-position: top center;
 	height: 2700px;
@@ -547,6 +547,8 @@ section#portfolio nav ul li a span.subtitle
 /*ABOUT*/
 section#about
 {
+	padding-bottom: 35px;
+	margin-top: 45px;
 }
 /*FOOTER*/
 #footercontainer
@@ -602,6 +604,7 @@ footer#sitefooter #deknijfict
 	-moz-opacity: 0.5;
 	opacity: 0.5;
 	cursor: pointer;
+	margin-right: 14px;
 }
 footer#sitefooter #deknijfict:hover
 {

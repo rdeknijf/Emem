@@ -8,7 +8,7 @@
             if ($imgs = $this->project->getImgs()) {
 
                 foreach($imgs as $img) {
-                    echo '<a class="photo_thumb" rel="prettyPhoto[' . $this->project->getName() . ']" href="' . $img['big'] . '"><img src="' . $img['thumb'] . '" alt=""></a>';
+                    echo '<a class="photo_thumb" rel="prettyPhoto[' . $this->project->getName() . ']" href="' . $img['big'] . '"><img src="' . $img['thumb'] . '" alt="" width="75" height="69"></a>';
 
 
                 }

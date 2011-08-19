@@ -1,145 +1,74 @@
 <?xml version="1.0"?>
-<project name="Emem Build Script" default="build" basedir="../">    
+<project name="Emem Build Script" default="build" basedir="../">
 
-    <property file="build/config/config.properties"/>
-    
-    
-      <!-- path to the svnant libraries. Usually they will be located in ANT_HOME/lib -->
-    <path id="svnant.classpath">
-        <fileset dir="${dir.build}/tools/svnant/">
-            <include name="**/*.jar"/>
-        </fileset>
-    </path>  
+    <import file="../../Omniant/omniant.xml"/>
 
-      <!-- load the svn task -->
-    <typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
-  
-  
-  
-  
-  
-    <!--
-    *************************************************
-    * BASE TARGETS                                  *
-    *************************************************
-    -->        
-    
     <target name="build"
-        depends="rev,
-                 cleanstart,
-                 checkout,
-                 cleancheckout,
-                 minify"/>   
-                 
-    <target name="build-test"
-        depends="build,
-                 move-test"/>
+            depends="-prep,
+                    -rev,
+                    -mkdirs,
+                    -copy,
+                    -min-css,
+                    -min-js,
+                    -min-html"/>
 
-    
-    <target name="rev" description="(PRIVATE) Increase the current build number by one and set build date">
-    <!-- This is a private target -->
-    
-        <echo message="Starting build"/>   
-    
-        <echo message="Increasing the build number..."/>
-        <propertyfile file="./${dir.build}/config/buildinfo.properties" comment="Build Information File - DO NOT CHANGE">
-            <entry key="build.number" type="int" default="0000" operation="+" pattern="0000"/>
-            <entry key="build.date" type="date" value="now" pattern="dd.MM.yyyy HH:mm"/>
-        </propertyfile>
-        <property file="./${dir.build}/config/buildinfo.properties"/>
-        <echo>Creating build ${build.number}</echo>
-    </target>    
-    
-    
-    
-    
-    <target name="cleanstart">
-        
-        <echo message="Cleaning up previous build directory and recreating the folder."/>        
-        <delete dir="${dir.publish}"/>
-        <mkdir dir="${dir.publish}"/>
-    
+    <target name="build-neo"
+            depends="-prep,
+                    -rev,
+                    -mkdirs,
+                    -copy,
+                    -neo"/>
+
+    <target name="build-neo-min"
+            depends="-prep,
+                    -rev,
+                    -mkdirs,
+                    -copy,
+                    -min-css,
+                    -min-js,
+                    -min-html,
+                    -neo"/>
+
+    <target name="build-move-test"
+            depends="build,
+                     move-test,
+                     db-transfer-test"/>
+
+
+    <target name="build-move-test-nomin"
+            depends="-prep,
+                    -rev,
+                    -mkdirs,
+                    -copy,
+                     move-test,
+                     db-transfer-test"/>
+
+<!--    <target name="build-move-prod"
+            depends="build,
+                     move-prod,
+                     db-transfer-prod"/>-->
+
+
+
+    <target name="clear" depends="-prep,
+                                  -clear"/>
+
+    <target name="-prep">
+
+
+        <dirname property="omniant.basedir" file="${ant.file.omniant}"/>
+
+
+        <property file="./build/project.properties"/>
+        <property file="${omniant.basedir}/default.properties"/>
+
+
+        <property name="dir.tools" value="${omniant.basedir}\${omnidir.tools}"/>
+
+
     </target>
-    
-    <target name="checkout" depends="cleanstart">
-                
-        <svn>
-            <checkout url="${url.repo}/${project.name}" revision="HEAD" destPath="${dir.publish}" />
-        </svn>
-    
-    </target>   
-    
-    <target name="cleancheckout" depends="checkout">
-        
-        <delete dir="${dir.publish}/build/"/>
-        <delete dir="${dir.publish}/docs/"/>
-        <delete dir="${dir.publish}/tests/"/>
-        <delete dir="${dir.publish}/nbproject/"/>        
-        <delete dir="${dir.publish}/.svn/"/>   
-        <delete includeemptydirs="true"> 
-            <fileset dir="${dir.publish}" includes="**/.svn/" defaultexcludes="false"/>
-        </delete>
-    
-    </target>
-    
-    <target name="minify">   
-        <antcall target="min-css"/>
-        <antcall target="min-js"/>
-        <antcall target="min-html"/>
-    </target>
-    
-    <target name="min-css">
-        <apply executable="java" parallel="false" force="true" dest="${dir.publish}">
-            <fileset dir="${dir.publish}" includes="**/*.css"/>
-            <arg line="-jar"/>
-            <arg path="${basedir}/build/tools/${tool.yuicompressor}"/>
-            <srcfile/>
-            <arg line="-o"/>             
-            <mapper type="identity"/>
-            <targetfile/>
-        </apply>                 
-    </target>
-    
-    <target name="min-js">
-        
-        <apply executable="java" parallel="false" force="true" dest="${dir.publish}">
-            <fileset dir="${dir.publish}" includes="**/*.js"/>
-            <arg line="-jar"/>
-            <arg path="${basedir}/build/tools/${tool.yuicompressor}"/>
-            <srcfile/>
-            <arg line="-o"/>             
-            <mapper type="identity"/>
-            <targetfile/>
-        </apply>        
-        
-    </target>
-    
-    <target name="min-html">
-        <echo message="Run htmlcompressor on the HTML"/>
-        <echo message=" - removing html comments"/>
-        <echo message=" - compressing inline style/script tag contents"/>
-        <apply executable="java" parallel="false" force="true" dest="${dir.publish}" >
-            <fileset dir="${dir.publish}" includes="**/*.phtml"/>
-            <arg value="-jar"/>
-            <arg path="${dir.build}/tools/${tool.htmlcompressor}"/>
-            <arg line="--type html"/>
-            <arg line="--remove-quotes"/>
-            <arg line="--remove-intertag-spaces"/>
-            <arg line="--compress-js"/>
-            <arg line="--compress-css"/>
-            <srcfile/>
-            <arg value="-o"/>
-            <mapper type="identity"/>
-            <targetfile/>
-        </apply>
-    </target> 
-    
-    <target name="move-test">
-        <echo message="Moving to 'testing' location"/>
-        <move todir="${dir.testing}">
-            <fileset dir="${dir.publish}"/>
-        </move>
-    </target>
-    
-    
+
+
+
+
 </project>
