@@ -94,16 +94,15 @@ class Emem_Model_Project extends Zend_Db_Table_Row_Abstract {
 
         if (is_dir($project_img_path)) {
 
-            $dir = opendir($project_img_path);
+            $loadfiles = scandir($project_img_path);
 
             $iter = 0;
 
-            while ($file = readdir($dir)) {
+            foreach($loadfiles as $file) {
 
                 $ext = @substr($file, -4);
 
                 //Zend_Debug::dump($file);
-
 
 
                 if ($ext == '.jpg') {
