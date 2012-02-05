@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="Emem Build Script" default="build" basedir="../">
 
-    <import file="../../Omniant/omniant.xml"/>
+    <import file="../../../Omniant/omniant.xml"/>
 
     <target name="build"
             depends="-prep,
